@@ -6,6 +6,14 @@ class ProductsControllerTest < ActionDispatch::IntegrationTest
 
     assert_response :success
     assert_select '.product', 3
+    assert_select '.category', 3
+  end
+
+  test 'render a list of products filtered by category' do
+    get products_path(category_id: categories(:computers).id)
+
+    assert_response :success
+    assert_select '.product', 1
   end
 
   test 'render a detailed product page' do
@@ -63,7 +71,7 @@ class ProductsControllerTest < ActionDispatch::IntegrationTest
         price: 165
       }
     }
-    
+
     assert_redirected_to products_path
     assert_equal flash[:notice], 'Tu producto se ha actualizado correctamente'
   end
