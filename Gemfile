@@ -74,3 +74,5 @@ end
 gem "pg_search", "~> 2.3"
 
 gem "pagy", "~> 6.0"
+
+gem "view_component", "~> 3.5"
